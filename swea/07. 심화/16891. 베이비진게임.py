@@ -1,48 +1,42 @@
-'''
-1) count 배열 만들기 : P1, P2
-'''
-
 T = int(input())
 for tc in range(1, T+1):
     cards = list(map(int, input().split()))
 
-    P1 = [0]*10
-    P2 = [0]*10
+    #1 카운트 정렬할 빈리스트 만들기
+    p1 = [0]*10
+    p2 = [0]*10
 
-    #2 일단 카드 4장을 뽑는다.
-    for i in range(0, 4):
-        card = cards[i]
-        if i % 2 ==0:
-            P1[card] += 1
-        else:
-            P2[card] += 1
-    winner = 0
-    #3 카드를 차례로 뽑으면서 run과 triplet 검사하기
-    for i in range(4, 12):
-            card = cards[i]
-            if i % 2 ==0:
-                P1[card] += 1
-                # run 검사하기
-            for j in range(10):
-                if P1[j] >= 3:
+    winner = 0 # default는 무승부
+    cnt = 0 # 카드 뽑는 순서
+    for card in cards:
+        cnt += 1
+
+        if cnt % 2: # 홀수일 때; p1 카드 뽑기
+            p1[card] += 1
+        else: # 짝수일 때; p2 카드 뽑기
+            p2[card] += 1
+
+        if cnt >= 5: # 각 플레이어가 최소 3장 이상 뽑았을 때 부터 baby gin 검사한다.
+            # triplet 검사 먼저
+            for i in range(10):
+                if p1[i] >= 3:
                     winner = 1
                     break
-            for j in range(0, 8):
-                if P1[j] == P1[j+1] == P1[j+2]:
-                    winner = 1
-                    break
-
-        else:
-            P2[card] += 1
-        for j in range(10):
-                if P2[j] >= 3:
-                    winner = 2
-                    break
-            for j in range(0, 8):
-                if P2[j] == P1[j+1] == P1[j+2]:
+                elif p2[i] >= 3:
                     winner = 2
                     break
 
-    print(winner)
+            # run 검사
+            if winner == 0:
+                for j in range(8):
+                    if p1[j] and p1[j+1] and p1[j+2] >= 1:
+                        winner = 1
+                        break
+                    elif p2[j] and p2[j+1] and p2[j+2] >= 1:
+                        winner = 2
+                        break
 
+            if winner != 0: #baby gin 나오면 게임을 종료한다. (break를 어떻게 쓸지 공부하자..!)
+                break
 
+    print(f'#{tc} {winner}')
