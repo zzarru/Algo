@@ -1,6 +1,5 @@
 from collections import deque
 
-
 def solution(maps):
     answer = 0
     dx = [-1, 1, 0, 0]  # 동서남북 +1칸
