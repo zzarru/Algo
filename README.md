@@ -16,8 +16,8 @@
 ## 📌 Convention
 ### 1️⃣ Project Convention  
 #### 🌀 프로젝트 구조는 다음과 같다.  
-    github-ID/플랫폼/플랫폼_문제번호_난이도_문제이름.언어
-    ex. zzarru/SWEA/BOJ_1234_B5_별찍기3.py
+    플랫폼/플랫폼_문제번호_난이도_문제이름.언어
+    ex. SWEA/BOJ_1234_B5_별찍기3.py
 
 #### 🌀 플랫폼 표기  
     BOJ - 백준  
