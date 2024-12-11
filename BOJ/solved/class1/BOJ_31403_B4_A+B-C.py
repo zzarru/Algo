@@ -12,7 +12,7 @@ intAB = int(strAB)
 print(intAB-C)
 
 
-```
+'''
 1) input() -> 문자열로 입력을 받음
 2) print문 안에서 함수를 int(), str() 함수를 바로 썼다면 코드가 간결해졌을 거 같다.
 ex)
@@ -25,4 +25,4 @@ print(int(A)+int(B)-C)
 
 #2 문자열로 계산
 print(int(A+B)-C))
-```
+'''
